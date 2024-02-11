@@ -25,13 +25,26 @@ Output: The application presents recruiters with the most recent statistics of c
 
 2. Make sure the filepaths in the app.py file match with those on your own device.
 
-3. Open the Application: Navigate to the project directory and open the application.  
+3. Open the Application: Navigate to the project directory and open the application.
+   
+     i. In order to run this application, users must have the following software installations:
+   
+           a. Python
+   
+           b. Scikit Learn
+   
+           c. Numpy
+   
+           d. Flask
+   
+           e. Pandas
+   
 
-4. Input Data: Enter the height, weight, star ranking, and rating of the potential recruit into the application interface.  
+5. Input Data: Enter the height, weight, star ranking, and rating of the potential recruit into the application interface.  
 
-5. Run the Algorithm: Execute the algorithm to initiate the matching process.  
+6. Run the Algorithm: Execute the algorithm to initiate the matching process.  
 
-6. Review Output: Once the matching process is complete, review the output to examine the most recent statistics of college athletes who closely resemble the input recruit's profile.  
+7. Review Output: Once the matching process is complete, review the output to examine the most recent statistics of college athletes who closely resemble the input recruit's profile.  
 
 
 **Contributors**  
