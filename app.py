@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 
 app = Flask(__name__)
 
@@ -126,7 +126,8 @@ def submit():
     else:
         message = f"Using data from their recruitment seasons, {name1} is the athlete most similar to your profile by height and weight, and {name2} is the athlete most similar to your profile based on stars and rating.\n{name1} had {rushing1} rushing yards and {touchdowns1} touchdowns this past season, and {name2} had {rushing2} rushing yards and {touchdowns2} touchdowns this past season!"
 
-    return redirect(url_for('index', result = message))
+    #return redirect(url_for('index', result = message))
+    return jsonify(message=message)
 
 if __name__ == '__main__':
     app.run(debug=True)
