@@ -38,6 +38,9 @@ Output: The application presents recruiters with the most recent statistics of c
            d. Flask
    
            e. Pandas
+      ii. In the terminal, run the command 'flask run'
+   
+      iii. Paste the output into your browser  
    
 
 5. Input Data: Enter the height, weight, star ranking, and rating of the potential recruit into the application interface.  
