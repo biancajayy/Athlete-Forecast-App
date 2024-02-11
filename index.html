@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athlete Forecast</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='images/photoshopBackground.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0;
+        }
+        header {
+            text-align: center;
+            color: white;
+            padding-top: 20px;
+            padding-bottom: 10px;
+            font-size: 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        main {
+            margin: 20px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .About {
+            margin-bottom: 10px;
+        }
+        .about-header{
+            text-align: center;
+            margin-top: 0;
+            padding-top: 5px;
+            padding-bottom: 20px;
+        }
+        .aboutLink {
+            color: #FF69B4; 
+            text-decoration: underline;
+            display: inline-block;
+            align-self: center;
+            padding-bottom: 20px;
+        }
+        .aboutLink:hover {
+            color: #fc3699;
+        }
+        .submitButton {
+            border: 0;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 15px;
+            background: #FF69B4; 
+            color: #fff; 
+            border-radius: 5px; 
+            padding: 10px 20px; 
+            text-decoration: none;
+            display: inline-block;
+            align-self: center;
+        }
+        .submitButton:hover {
+            background: #fc3699; 
+            color: #fff;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .form-input {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 30px;
+            background-color: #54734f; 
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .form-input label {
+            margin-right: 20px; 
+            white-space: nowrap; 
+            color: white;
+            font-size: 20px;
+            width: 110px;
+            text-shadow: rgba(0, 0, 0, .5);
+        }
+        .form-input input {
+            flex-grow: 1;
+            padding: 10px; 
+            border-radius: 5px; 
+            border: 1px solid #ccc; 
+        }
+        .form-input input:focus {
+            outline-color: #FF69B4;
+        }
+        input[type="number"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100px; 
+            margin-left: 10px;
+        }
+        .submitButton {
+            padding: 10px 20px;
+            border-radius: 5px; 
+            border: 0;
+            background: #FF69B4; 
+            color: white; 
+            cursor: pointer;
+        }
+        .postSubmission {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          display: none;
+          justify-content: center;
+          align-items: center;
+        }
+        .postSubmissionBox { 
+            background-color: #fff;
+            padding: 30px; 
+            padding-top: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+            width: 50%;
+            max-width: 600px;
+            position: relative;
+        }
+        .submissionHeader {
+            text-align: center;
+            margin-top: 0;
+            padding-top: 5px;
+        }
+        .submission-close-button {
+            position: absolute;
+            top: 10px; 
+            right: 10px; 
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .submissionMessage {
+            text-align: left;
+            width: 100%;
+            padding-top: 20px;
+        }
+        .About {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          display: none;
+          justify-content: center;
+          align-items: center;
+        }
+        .about-box {
+          background-color: #fff;
+          padding: 50px; 
+          padding-top: 10px;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+          width: 50%;
+          max-width: 600px;
+          position: relative;
+        }
+        .about-close-button {
+            position: absolute;
+            top: 10px; 
+            right: 10px; 
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .about-close-button:hover,
+        .about-close-button:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        .about-header {
+          text-align: center;
+          margin-top: 0;
+          padding-top: 5px;
+        }
+        .about-paragraph {
+            text-align: center;
+        }
+        .creator-tag {
+            margin-bottom: 10px;
+        }
+        #footer {
+            color: #fc3699; 
+            text-align: center; 
+            width: 100%; 
+            position: fixed;
+            bottom: 0;
+            padding: 10px 0; 
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Athlete Forecast</h1>
+        <nav>
+            <ul>
+                <li><a href="#" class="aboutLink" id="aboutLink" >About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+        <section>
+            <form id="dataForm" action="/submit" method="post">
+                <div class="form-input">
+                    <label for="weight (lbs)">WEIGHT (lbs):</label>
+                    <input type="number" id="weight" name="weight" min="0" required >
+                </div>
+                <div class="form-input">
+                    <label for="height">HEIGHT (in):</label>
+                    <input type="number" id="height" name="height" min="0" required>
+                </div>
+                <div class="form-input">
+                    <label for="rating">RATING:</label>
+                    <input type="number" id="rating" name="rating" min="0.0001" max="1.0000" step="0.0001" required>
+                </div>
+                <div class="form-input">
+                    <label for="stars">STARS:</label>
+                    <input type="number" id="stars" name="stars" min="1" max="5" required>
+                </div>
+                <button type="submit" class="submitButton" >Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <div id="postSubmission" class="postSubmission">
+      <div class="postSubmissionBox" id="postSubmissionBox">
+          <div class="submissionHeader" id="submissionHeader">
+              <h2>Results</h2>
+          </div>
+          <div class="submissionMessage" id="submissionMessage">
+            <p></p>
+            </div>
+          <button class="submission-close-button" id="submission-close-button" onclick="closeModal()">X</button>
+      </div>
+    </div>
+
+
+    <div id="About" class="About">
+      <div class="about-box" id="about-box">
+          <button class="about-close-button" onclick = "closeModal()" >X</button>
+          <div class = "about-header" id = "about-header">
+            <h2>About</h2>
+          </div>
+          <p class= "creator-tag">Creators: Chloe Nicola, Simran Sharma, Jeslyn Guo, Bianca Jayaraman</p>
+          <p id="about-paragraph">Athlete Forecast is a cutting-edge application designed to predict the future success of high school wide receivers by comparing their metrics with those of established collegiate athletes during their recruitment period. By leveraging a comprehensive database of athlete statistics, our application focuses on key attributes: weight, height, number of stars, and rating. </p>
+      </div>
+    </div>
+
+
+    <footer id="footer">
+        <p>&copy; 2024 Athlete Forecast. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('dataForm').addEventListener('submit', function(event) {
+            //event.preventDefault();
+            document.getElementById('postSubmission').style.display = 'flex'; 
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var result = urlParams.get('result');
+            if (result && result !== 'Error') {
+                document.getElementById('postSubmission').style.display = 'flex';
+                document.getElementById('submissionMessage').innerHTML = `<p>${result}</p>`;
+            }
+        });
+
+        document.getElementById('aboutLink').addEventListener('click', function(event) {
+          event.preventDefault(); 
+          document.getElementById('About').style.display = 'flex'; 
+        });
+    
+        function closeModal() {
+            document.getElementById('postSubmission').style.display = 'none'; 
+            document.getElementById('About').style.display = 'none'; 
+
+        }
+    </script>
+
+
+</body>
+</html>
