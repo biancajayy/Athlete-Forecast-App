@@ -119,10 +119,11 @@ def submit():
             touchdowns2 = int(player_stats_HW.iloc[0,6])
             break
 
-    if name1 == name2:
-        message = f"Using data from their recruitment season, {name1} is the athlete most similar to your profile.\n{name1} had {rushing1} rushing yards and {touchdowns1} touchdowns this past season!"
-    elif height < 60 or weight < 100 or rating < 0.1000:
+    
+    if height < 60 or weight < 100 or rating < 0.1000:
         message = "Unfortunately, there are no athletes whose data during their recruitment seasons matches your profile."
+    elif name1 == name2:
+        message = f"Using data from their recruitment season, {name1} is the athlete most similar to your profile.\n{name1} had {rushing1} rushing yards and {touchdowns1} touchdowns this past season!"
     else:
         message = f"Using data from their recruitment seasons, {name1} is the athlete most similar to your profile by height and weight, and {name2} is the athlete most similar to your profile based on stars and rating.\n{name1} had {rushing1} rushing yards and {touchdowns1} touchdowns this past season, and {name2} had {rushing2} rushing yards and {touchdowns2} touchdowns this past season!"
 
