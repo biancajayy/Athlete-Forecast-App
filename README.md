@@ -21,15 +21,17 @@ Output: The application presents recruiters with the most recent statistics of c
 
 **How to Use**  
 
-1. Clone the Repository: Begin by cloning the Athlete Forecast repository to your local device.  
+1. Clone the Repository: Begin by cloning the Athlete Forecast repository to your local device.
 
-2. Open the Application: Navigate to the project directory and open the application.  
+2. Make sure the filepaths in the app.py file match with those on your own device.
 
-3. Input Data: Enter the height, weight, star ranking, and rating of the potential recruit into the application interface.  
+3. Open the Application: Navigate to the project directory and open the application.  
 
-4. Run the Algorithm: Execute the algorithm to initiate the matching process.  
+4. Input Data: Enter the height, weight, star ranking, and rating of the potential recruit into the application interface.  
 
-5. Review Output: Once the matching process is complete, review the output to examine the most recent statistics of college athletes who closely resemble the input recruit's profile.  
+5. Run the Algorithm: Execute the algorithm to initiate the matching process.  
+
+6. Review Output: Once the matching process is complete, review the output to examine the most recent statistics of college athletes who closely resemble the input recruit's profile.  
 
 
 **Contributors**  
