@@ -1,5 +1,5 @@
 
-# <span style="font-size:larger;">Athlete Forecast</span>
+# <span style="font-size:larger;">Athlete Forecast Application</span>
 
 Welcome to Athlete Forecast!
 Athlete Forecast is a tool designed to revolutionize the collegiate football recruiting process. By utilizing sophisticated statistical analysis and comparison techniques, this project aims to provide recruiters with valuable insights into the potential fit of high school football recruits at the collegiate level.  
