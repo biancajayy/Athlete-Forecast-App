@@ -20,7 +20,7 @@ def submit():
     stars = float(request.form['stars'])
 
     #algorithm starts
-    url = '/Users/chloenicola/Desktop/GT 24/Hacklytics/Hacklytics2024/HSRecruitStats.csv'
+    url = 'HSRecruitStats.csv'
     hsDf = pd.read_csv(url)
     hsDf = hsDf.drop(columns=['Name','Unnamed: 6','Unnamed: 11','Id','AthleteId'])
     hsDf = hsDf.drop(hsDf.index[1973:2476])
@@ -87,7 +87,7 @@ def submit():
     name1 = None
     name2 = None
 
-    ESPN = '/Users/chloenicola/Desktop/GT 24/Hacklytics/Hacklytics2024/ESPN WR Stats.csv'
+    ESPN = 'ESPN WR Stats.csv'
     ESPNdf=pd.read_csv(ESPN)
     ESPNdf = ESPNdf.drop(columns=['First Name', 'Last name'])
     ESPNdf.head(20)
